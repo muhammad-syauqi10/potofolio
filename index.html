@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MUHAMMAD SYAUQI| Mahasiswa & Admin Profesional - Portofolio Interaktif</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(145deg, #eef2fb 0%, #e0e8f0 100%);
+            padding: 2rem 1.5rem;
+            color: #1a2c2e;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background ORB */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 20%, rgba(65, 140, 80, 0.08), rgba(200, 220, 180, 0.02) 70%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 80% 90%, rgba(70, 130, 100, 0.05), transparent 60%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* floating particle effect subtle */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Glassmorphism refined cards */
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255,255,255,0.6);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 0% 20%, rgba(60, 130, 80, 0.03), transparent 70%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.96);
+            border-color: rgba(80, 150, 100, 0.2);
+        }
+
+        /* Gradient accent line */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(95deg, #2b6e3c, #6fbf4c, #ffb347, #2b6e3c);
+            background-size: 200% auto;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            transform-origin: left;
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+            animation: shimmer 1.2s ease;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Profile special card - premium */
+        .profil {
+            background: linear-gradient(125deg, rgba(255,255,245,0.98) 0%, rgba(245, 255, 240, 0.95) 100%);
+            backdrop-filter: blur(12px);
+            text-align: center;
+            border: 1px solid rgba(70, 140, 80, 0.25);
+            position: relative;
+        }
+        .profil .glow-effect {
+            position: absolute;
+            top: -30%;
+            left: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #b5e3b5, transparent);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .foto-profil {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.2), 0 0 0 4px white, 0 0 0 8px rgba(43, 110, 60, 0.2);
+            transition: all 0.4s ease;
+        }
+        .foto-profil:hover {
+            transform: scale(1.05) rotate(1.5deg);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.25), 0 0 0 4px #f9f7f0, 0 0 0 12px rgba(111, 191, 76, 0.3);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(125deg, #1c4d2d, #328a48, #f5b042);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .status {
+            background: linear-gradient(105deg, #e1f3e4, #cbe5d0);
+            color: #1a5730;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 28px;
+            border-radius: 80px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(70, 130, 70, 0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            backdrop-filter: blur(4px);
+        }
+
+        .bio {
+            background: rgba(255, 252, 235, 0.6);
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-weight: 500;
+            color: #2c4b3e;
+            border-left: 3px solid #5baa6e;
+            font-size: 0.95rem;
+        }
+
+        /* Buttons 3D modern */
+        .tombol {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1e2f2a;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 80px;
+            margin: 5px 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+            box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .tombol::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+        .tombol:hover::before {
+            transform: translateX(0);
+        }
+        .tombol-wa {
+            background: linear-gradient(115deg, #1f8a4c, #2bbd74);
+            box-shadow: 0 8px 18px rgba(31, 138, 76, 0.3);
+        }
+        .tombol-email {
+            background: linear-gradient(115deg, #2c3e50, #1e2a36);
+        }
+        .tombol:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.02);
+        }
+
+        /* Section heading with icons */
+        .judul {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 5px solid #3d9e56;
+            padding-left: 1rem;
+            letter-spacing: -0.3px;
+        }
+        .judul i {
+            font-size: 1.9rem;
+            color: #3d9e56;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        /* Info Grid Modern */
+        .info-baris {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.2rem;
+        }
+        .info-kotak {
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            padding: 1rem 0.8rem;
+            border-radius: 1.8rem;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #e2eddc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .info-kotak:hover {
+            background: white;
+            transform: scale(1.02);
+            border-color: #9acd9a;
+            box-shadow: 0 12px 18px -12px rgba(0,0,0,0.1);
+        }
+        .info-kotak .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #537a5c;
+        }
+        .info-kotak .isi {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-top: 6px;
+            color: #1f4932;
+        }
+
+        /* Skills pills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1rem 0;
+        }
+        .skill-item {
+            background: #eaf5e6;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1f6233;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: 1px solid #cde2cf;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .skill-item:hover {
+            background: #def0da;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(70, 130, 70, 0.12);
+            border-color: #9fcfa3;
+        }
+
+        /* Catatan card */
+        .catatan {
+            background: #fff7e5;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #f5b042;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        /* Project item premium - Grid layout for 2 projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1.6rem;
+            padding: 1.2rem 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid #eaf0e5;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-item:hover {
+            background: white;
+            transform: translateY(-8px);
+            border-color: #bdddbd;
+            box-shadow: 0 12px 24px -16px rgba(0,0,0,0.15);
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #255e38;
+        }
+        .project-tech-link {
+            background: #eef3ea;
+            padding: 6px 20px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-decoration: none;
+            color: #2c6e3f;
+            transition: 0.2s;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+        .project-tech-link:hover {
+            background: #d8ebd2;
+            transform: scale(0.97);
+        }
+        .project-desc {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #2c3e2f;
+            margin-top: 8px;
+        }
+        .project-desc i {
+            margin-right: 6px;
+            color: #5baa6e;
+        }
+
+        /* pengalaman */
+        .pengalaman-item, .pendidikan-item {
+            margin-bottom: 1.6rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #dae6dc;
+            transition: 0.2s;
+        }
+        .pengalaman-item:hover, .pendidikan-item:hover {
+            padding-left: 12px;
+            border-bottom-color: #95c296;
+        }
+        .tempat {
+            color: #2d7a46;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin: 6px 0 8px;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        /* Custom list */
+        .custom-list li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            background: #fafef7;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: 0.2s;
+        }
+        .custom-list li:hover {
+            background: #f3f9ef;
+            transform: translateX(6px);
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: #517a5e;
+            border-top: 1px solid rgba(70, 110, 70, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .judul {
+                font-size: 1.4rem;
+            }
+            .tombol {
+                padding: 8px 20px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation fade in */
+        .card {
+            animation: cardGlide 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) backwards;
+            animation-delay: calc(var(--order, 0) * 0.06s);
+        }
+        @keyframes cardGlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .container .card:nth-child(1) { --order: 1; }
+        .container .card:nth-child(2) { --order: 2; }
+        .container .card:nth-child(3) { --order: 3; }
+        .container .card:nth-child(4) { --order: 4; }
+        .container .card:nth-child(5) { --order: 5; }
+        .container .card:nth-child(6) { --order: 6; }
+        .container .card:nth-child(7) { --order: 7; }
+        .container .card:nth-child(8) { --order: 8; }
+
+        /* stat badge */
+        .badge-lokasi {
+            background: linear-gradient(135deg, #f1f9f0, #e5f0e2);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-weight: 600;
+        }
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #d0e2cf, transparent);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HERO CARD -->
+    <div class="card profil">
+        <div class="glow-effect"></div>
+        <img src="syauqi.jpeg" alt="Muhammad Syauqi - Foto Profil" class="foto-profil" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=2b6e3c&color=fff&rounded=true&size=140&name=Muhammad+Syauqi&bold=true';">
+        <h1>Muhammad Syauqi</h1>
+        <div class="status">
+            <i class="fas fa-graduation-cap"></i> Mahasiswa Teknik Informatika · Semester 4
+        </div>
+        <div class="bio">
+            <i class="fas fa-map-marker-alt" style="color:#2b6e3c; margin-right: 6px;"></i> Aceh, Indonesia <br>
+            Mahasiswa universitas jabal Ghafur Semester 4.
+        </div>
+        <div>
+            <a href="mailto:armynato079@gmail.com" class="tombol tombol-email"><i class="fas fa-envelope"></i> Email Saya</a>
+            <a href="https://wa.me/6282286583195" class="tombol tombol-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Info Akademik -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-user-graduate"></i> 
+            <span>Profil Akademik</span>
+        </div>
+        <div class="info-baris">
+            <div class="info-kotak">
+                <div class="label"><i class="fas fa-university"></i> Universitas</div>
+                <div class="isi">Universitas Jabal Ghafur</div>
+            </div>
+            <div class="info-kotak">
+                <div class="label"><i class="fas fa-laptop-code"></i> Jurusan</div>
+                <div class="isi">Teknik Informatika</div>
+            </div>
+            <div class="info-kotak">
+                <div class="label"><i class="fas fa-layer-group"></i> Semester</div>
+                <div class="isi">4 (Empat)</div>
+            </div>
+            <div class="info-kotak">
+                <div class="label"><i class="fas fa-home"></i> Domisili</div>
+                <div class="isi">Aceh, Sigli</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keahlian Unggulan -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-cogs"></i>
+            <span>Kompetensi Unggulan</span>
+        </div>
+        <div class="skills">
+            <span class="skill-item"><i class="fab fa-microsoft"></i> editing video reuplod</span>
+        </div>
+        <div class="catatan">
+            <i class="fas fa-code"></i> <strong>Sedang eksplorasi:</strong> HTML, CSS, Python dasar, dan logika pemrograman. <br>
+            Keahlian inti: <strong>Microsoft Office & operasional perkantoran</strong> — siap membantu tugas administrasi, editing dokumen, dan manajemen data.
+        </div>
+    </div>
+
+    <!-- PROJECT SAYA dengan 2 Proyek -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-folder-open"></i>
+            <span>Project Saya</span>
+        </div>
+        <div class="project-grid">
+            <!-- Proyek 1: Ojek Online -->
+            <div class="project-item">
+                <div class="project-title">
+                    <i class="fas fa-motorcycle"></i> Ojek Online
+                </div>
+                <a href="https://muhammad-syauqi10.github.io/ojol/" target="_blank" rel="noopener noreferrer" class="project-tech-link">
+                    <i class="fas fa-globe"></i> Kunjungi Project
+                </a>
+                <div class="project-desc">
+                    <i class="fas fa-code-branch"></i> Platform pemesanan ojek online sederhana berbasis HTML/CSS. Proyek pengembangan front-end untuk mengasah kreativitas dan UI/UX.
+                </div>
+            </div>
+            <!-- Proyek 2: Landing Page Portofolio -->
+            <div class="project-item">
+                <div class="project-title">
+                    <i class="fas fa-id-card"></i> Layanan surat desa
+                </div>
+                <a href=" https://muhammad-syauqi10.github.io/surat/" target="_blank" rel="noopener noreferrer" class="project-tech-link">
+                    <i class="fas fa-rocket"></i> Lihat Preview
+                </a>
+                <div class="project-desc">
+                    <i class="fas fa-palette"></i>Platform layana surat desa  online sederhana berbasis HTML/CSS. Proyek pengembangan front-end untuk mengasah kreativitas dan UI/UX.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pendidikan -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Riwayat Pendidikan</span>
+        </div>
+        <div class="pendidikan-item">
+            <h3><i class="fas fa-university"></i> S1 Teknik Informatika</h3>
+            <div class="tempat"><i class="fas fa-calendar-week"></i> Universitas Jabal Ghafur | 2024 – Sekarang (Semester 4)</div>
+            <div class="deskripsi">
+                Mata kuliah terkait: Algoritma Pemrograman, Dasar Komputasi, Microsoft Office Lanjutan, Sistem Informasi Manajemen, Pengantar Basis Data.
+            </div>
+        </div>
+        <div class="pendidikan-item">
+            <h3><i class="fas fa-school"></i> SMK N 3 sigli</h3>
+            <div class="tempat"><i class="fas fa-flask"></i> TSM  | 2016 - 2019</div>
+            <div class="deskripsi">
+                Aktif dalam ekskul TSM.
+            </div>
+        </div>
+    </div>
+
+    <!-- Kemampuan -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-thumbs-up"></i>
+            <span>Yang Bisa Saya Lakukan</span>
+        </div>
+        <ul class="custom-list">
+            <li><i class="fas fa-file-video"></i> Editor Video (Reupload & Editing Konten)</li>
+            <li><i class="fas fa-chart-line"></i> Administrasi & Manajemen Data Perkantoran</li>
+            <li><i class="fas fa-file-alt"></i> Pembuatan Dokumen Profesional (Word, Excel, PPT)</li>
+            <li><i class="fas fa-code"></i> Basic Web Development (HTML, CSS, JavaScript dasar)</li>
+            <li><i class="fas fa-search"></i> Riset & Pengolahan Informasi Digital</li>
+        </ul>
+    </div>
+
+    <!-- Tujuan & Aspirasi -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-bullseye"></i>
+            <span>Tujuan & Aspirasi</span>
+        </div>
+        <p style="line-height: 1.65; background: linear-gradient(115deg, #f4faf5, #eef6ea); padding: 1rem 1.5rem; border-radius: 1.6rem; font-weight: 500; border-left: 4px solid #5ca86e;">
+            <i class="fas fa-quote-left" style="color: #2b6e3c; margin-right: 6px; opacity: 0.7;"></i> 
+            Saya berkomitmen menyelesaikan S1 Teknik Informatika tepat waktu. Ingin berkembang menjadi profesional yang ahli di bidang teknologi informasi dan administrasi digital, serta siap berkontribusi di dunia kerja.
+        </p>
+    </div>
+
+    <!-- Kontak -->
+    <div class="card">
+        <div class="judul">
+            <i class="fas fa-address-card"></i>
+            <span>Hubungi Saya</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center;">
+            <div style="flex:1;">
+                <p style="margin: 10px 0;"><i class="fas fa-envelope" style="width: 28px; color:#2b6e3c;"></i> <strong>Email:</strong> armynato079@gmail.com</p>
+                <p style="margin: 10px 0;"><i class="fab fa-whatsapp" style="width: 28px; color:#25a56a;"></i> <strong>WhatsApp:</strong> 082286583195</p>
+                <p style="margin: 10px 0;"><i class="fab fa-instagram" style="width: 28px; color:#c13584;"></i> <strong>Instagram:</strong> @syqtns</p>
+            </div>
+            <div class="badge-lokasi">
+                <i class="fas fa-map-pin"></i> Siap kerja & kolaborasi
+            </div>
+        </div>
+        <hr>
+        <div style="text-align: center; font-size: 0.8rem; color: #4f6b5f;">
+            <i class="fas fa-clock"></i> Fast response · Bisa dihubungi via WhatsApp atau email untuk keperluan administrasi, editing video, desain sederhana, atau kolaborasi tugas.
+        </div>
+    </div>
+
+    <footer>
+        <i class="far fa-copyright"></i> 2026 MUHAMMAD SYAUQI — Mahasiswa Teknik Informatika | Berdedikasi, Profesional, Terbuka untuk belajar
+    </footer>
+</div>
+</body>
+</html>
